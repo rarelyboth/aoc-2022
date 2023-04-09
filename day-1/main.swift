@@ -57,18 +57,6 @@ func calculateCalorificValueOfNMostCalorificInventories(_ inventories: [Calorifi
     return topNInventories.reduce(0, +)
 }
 
-func readStringFromBundledInput(fileName: String) -> String {
-    guard let inputURL = Bundle.main.url(forResource: fileName, withExtension: nil) else {
-            fatalError("Failed to create URL for bundled input \(fileName)!")
-    }
-    
-    do {
-        return try String(contentsOf: inputURL)
-    } catch {
-        fatalError("Failed to read from URL: \(inputURL).")
-    }
-}
-
 func partOne(inventories: [CalorificInventory]) -> Int {
     return calculateCalorificValueOfMostCalorificElfsInventory(inventories)
 }
@@ -78,7 +66,7 @@ func partTwo(inventories: [CalorificInventory]) -> Int {
 }
 
 func main() {
-    let rawInput = readStringFromBundledInput(fileName: "day_1_input.txt")
+    let rawInput = readStringFromBundledInput(fileName: "input.txt")
     let inventories = parseCalorificInventories(rawInput: rawInput)
     
     let partOne = partOne(inventories: inventories)
